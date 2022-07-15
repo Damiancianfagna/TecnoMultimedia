@@ -19,14 +19,18 @@ x1 = constrain(x1,0,705);
   cuchilloGira++;
   if (cuchilloGira == cuchillo.length){
     cuchilloGira = 0;}}}
-void caidaCuchillo(){
-   if (cposy>height) {
-    cposy=-50;
-    cposx=random(1,750);
-    contadorPerdidos++;
-     
+
+//CORRECCIÓN=AGREGUÉ PARAMETROS 
+void caidaCuchillo(float y){
+
+  y=cposy;
+  if(y >= height){  
+     contadorPerdidos++; 
+   }  
+   {
+    cposy+=4;
   }
- cposy+=4;
+
  
  //CONTACTO AGARRAR CUCHILLOS
  }
@@ -47,12 +51,13 @@ if (contadorPerdidos>=1)
 
 estado="perdiste";
 }
-//BOTÓN JUGAR
-void boton(){
+//BOTÓN JUGAR //CORRECCIÓN=AGREGUÉ PARAMETROS 
+void boton(int p1, int p2, int p3, int p4){
 stroke(255, 255, 255);
  strokeWeight(3);
  noFill();
- rect(360, 380, 80, 40);
+ rect(p1, p2, p3, p4);
+ //rect
  if  (mouseX > 360 && mouseY < 360 + 80 && mouseY > 380 && mouseY< 380 + 40){
  if (mousePressed){
  estado = "instrucciones";
@@ -66,7 +71,7 @@ stroke(255, 255, 255);
   contadorAgarrados=0;
   x1=0;
   y1=565;
-  
- 
+  cposx=0;
+  cposy=0;
 }
 }

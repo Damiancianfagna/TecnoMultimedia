@@ -43,7 +43,7 @@ textSize( 40 );
 text("KNIFE CAVE",400,300);
 textSize( 24 );
 text("JUGAR",400,400);
-boton();
+boton(360, 380, 80, 40);
 
 
 //PANTALLA INSTRUCCIONES
@@ -67,7 +67,7 @@ else if (estado.equals("jugando")) {
  image (personaje, x1 ,y1);
   contacto();  
   movimientoPJ();
-  caidaCuchillo();
+  caidaCuchillo(-50);
   ganar();
   perdiste();
   } 
