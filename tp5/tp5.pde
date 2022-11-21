@@ -6,8 +6,8 @@
  //https://www.youtube.com/watch?v=Sex2UEGwWYY&ab_channel=DamianCianfagna
 
 //carga de sonido
-//import processing.sound.*;
-//SoundFile song; 
+import processing.sound.*;
+SoundFile song; 
 
 
 Principal a;
@@ -17,8 +17,8 @@ Principal a;
 
 void setup() {
   size(800, 600);
-   //song = new SoundFile(this , "musica.mp3");
-   //song.play();
+   song = new SoundFile(this , "musica.mp3");
+   song.play();
    a = new Principal();
    noCursor();
  
@@ -27,5 +27,6 @@ void setup() {
 void draw() {
   background(200);
   a.Obra();
-  println(a.contador);
+  
+
 }

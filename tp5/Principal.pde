@@ -1,34 +1,80 @@
  class Principal{
  
- int cambiar,contador;
+ int cambiar,contador,contadorm,cf;
  Bruja sprite;
  Fondo px;
- Fantasmas[]f = new Fantasmas[30];
+ Fantasmas[]f = new Fantasmas[60];
  CPantallas cp;
+ Monedas[]m = new Monedas[6] ;
  String estado;
-  
+ boolean limit,limitm;
+ int cantidad;
   Principal(){
   sprite=new Bruja();
   px = new Fondo();
   cp = new CPantallas();
   for (int i =0; i < f.length; i++){
-  f[i] = new Fantasmas(500 + i*200);
+  f[i] = new Fantasmas(500 + i*200);}
+  for (int i =0; i < m.length; i++){
+  m[i] = new Monedas(1000 + i*1000);
+  }
   estado="inicio";
   contador=0;
+  contadorm=0;
+  limit = false;
+  limitm = false;
+  cf = 0;
+  
+  
+
 }
-}
+  
  
   void colision(){
   for (int i =0; i < f.length; i++){ 
-  //if (f[i].yf < mouseY + 20 && f[i].yf > mouseY - 20 && f[i].xf < mouseX + 20 && f[i].xf > mouseX - 20){
+  
     if (mouseY < f[i].yf + 20 && mouseY > f[i].yf - 20 && mouseX < f[i].xf + 20 && mouseX>  f[i].xf  - 20){
-    this.contador ++ ;}}  
+      f[i].yf=7000;    
+      limit = true; 
+}
+    if (limit){
+    this.contador ++;
+    limit = false;
+    }
+}
+ }
+ 
+ void contactom(){
+ for (int i =0; i < m.length; i++){
+  if (mouseY < m[i].yd + 40 && mouseY > m[i].yd - 40 && mouseX < m[i].xd + 40 && mouseX>  m[i].xd  - 40){
+     m[i].yd =7000;
+     limitm = true;}
+     if (limitm){
+     this.contadorm ++;
+     limitm = false;
+     }
+ }
+ }
+ 
+ void ganaste(){
+ if (this.contadorm == 3){
+ estado = "ganar";
+ }
  }
  
  void perdiste(){
-  if (this.contador >= 28){
+  if (this.contador == 3){
   estado="perder";
   }}
+  
+  void reiniciar(){
+  estado="inicio";
+  contador=0;
+  contadorm=0;
+  limit = false;
+  limitm = false;
+  cf = 0;
+   }
   
  void estados(){
    if(estado.equals("inicio")){
@@ -51,10 +97,30 @@
   sprite.display();
   for (int i =0; i < f.length; i++){
   f[i].spritef();  }
+  for (int i =0; i < m.length; i++){
+  m[i].sprited();  }
   colision();
   perdiste();
- }else if (estado.equals("perder")){
-  cp.p3();}
+  contactom();
+  ganaste();
+ }else if (estado.equals("perder")){ 
+   cp.p3();
+    
+  if (keyPressed){
+     if(key == 'k'){
+       reiniciar();
+     estado="inicio";
+    }
+    }
+ }else if (estado.equals("ganar")){
+  cp.p4(); 
+  if (keyPressed){
+     if(key == 'k'){
+       reiniciar(); 
+     estado="inicio";
+    }
+    }
+ } 
  
  }
  

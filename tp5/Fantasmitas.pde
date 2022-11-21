@@ -12,6 +12,7 @@ class Fantasmas{
   void spritef(){
   image(bf,xf,yf);
   xf =xf-2;
+   
 }
 
 void fgeneral(){
