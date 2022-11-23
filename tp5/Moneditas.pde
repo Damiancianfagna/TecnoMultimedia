@@ -1,5 +1,6 @@
 class Monedas{
 
+  //objetos a recolectar para ganar
  PImage md;
  float xd,yd;
  

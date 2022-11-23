@@ -1,5 +1,6 @@
 class Fantasmas{
 
+  //enemigos
  PImage bf;
  float xf,yf;
  

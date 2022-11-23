@@ -1,5 +1,6 @@
 class CPantallas{
 
+  //carga de pantallas añadidas para lograr el formato juego
 PImage pp,pi,ppe,pg;
 
 CPantallas(){
